@@ -47,6 +47,12 @@ export function Header() {
           >
             Admin
           </Link>
+          <Link
+            href="/assignment"
+            className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+          >
+            功課說明
+          </Link>
 
           <span className="mx-1 h-4 w-px bg-white/20" />
 
