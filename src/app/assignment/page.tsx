@@ -15,9 +15,7 @@ import {
   Smartphone,
   Palette,
   Bell,
-  ExternalLink,
   BookOpen,
-  Code2,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -188,21 +186,6 @@ export default function AssignmentPage() {
                   <span className="text-slate-800 dark:text-gray-200">
                     2026年7月11日
                   </span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="mt-0.5 font-medium text-slate-500 dark:text-gray-400 min-w-[80px]">
-                    GitHub
-                  </span>
-                  <a
-                    href="https://github.com/DonKHK/lifewire-event-give-care"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-[#2A9D8F] hover:underline"
-                  >
-                    <Code2 className="h-3.5 w-3.5" />
-                    DonKHK/lifewire-event-give-care
-                    <ExternalLink className="h-3 w-3" />
-                  </a>
                 </div>
               </div>
             </div>
