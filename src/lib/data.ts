@@ -115,6 +115,8 @@ export const mockUserProfile: UserProfile = {
   id: "u-profile",
   name: "陳小美",
   avatar: "https://i.pravatar.cc/150?u=u1",
+  bio: "熱心公益嘅活動義工，鍾意用鏡頭記錄每個溫暖時刻 📸",
+  email: "siumei@example.com",
   photosUploaded: 3,
   supportsReceived: 47,
   likesReceived: 185,
@@ -133,6 +135,23 @@ export const mockTopSupporters: TopSupporter[] = [
   { name: "張美玲", avatar: "https://i.pravatar.cc/150?u=s4", supports: 54 },
   { name: "黃浩然", avatar: "https://i.pravatar.cc/150?u=s5", supports: 41 },
 ];
+
+// Mutable profile store (will be replaced by Supabase later)
+let _currentProfile: UserProfile = { ...mockUserProfile };
+
+export const getCurrentProfile = (): UserProfile => {
+  return { ..._currentProfile };
+};
+
+export const updateProfile = (updates: Partial<UserProfile>): UserProfile => {
+  _currentProfile = { ..._currentProfile, ...updates };
+  return { ..._currentProfile };
+};
+
+export const updateAvatar = (avatar: string): UserProfile => {
+  _currentProfile = { ..._currentProfile, avatar };
+  return { ..._currentProfile };
+};
 
 export const getPhotoById = (id: string): Photo | undefined => {
   return mockPhotos.find((photo) => photo.id === id);

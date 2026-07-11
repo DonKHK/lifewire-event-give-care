@@ -34,6 +34,8 @@ export interface UserProfile {
   id: string;
   name: string;
   avatar: string;
+  bio?: string;
+  email?: string;
   photosUploaded: number;
   supportsReceived: number;
   likesReceived: number;
