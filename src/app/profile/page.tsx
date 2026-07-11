@@ -58,47 +58,47 @@ export default function ProfilePage() {
 
         {/* Stats Cards */}
         <div className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          <Card className="border-0 bg-white p-6 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#E8F5F3]">
               <ImagePlus className="h-6 w-6 text-[#2A9D8F]" />
             </div>
-            <span className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+            <span className="text-2xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-3xl">
               {photosUploaded}
             </span>
-            <p className="mt-1 text-sm font-medium text-slate-500">
+            <p className="mt-1 text-sm font-medium text-slate-500 dark:text-gray-400">
               我已上載 {photosUploaded} 張相
             </p>
           </Card>
-          <Card className="border-0 bg-white p-6 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#FDF0ED]">
               <Heart className="h-6 w-6 text-[#E76F51]" />
             </div>
-            <span className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+            <span className="text-2xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-3xl">
               {supportsReceived}
             </span>
-            <p className="mt-1 text-sm font-medium text-slate-500">
+            <p className="mt-1 text-sm font-medium text-slate-500 dark:text-gray-400">
               收到 {supportsReceived} 次支持
             </p>
           </Card>
-          <Card className="border-0 bg-white p-6 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#E8F5F3]">
               <ThumbsUp className="h-6 w-6 text-[#2A9D8F]" />
             </div>
-            <span className="text-2xl font-extrabold text-[#1E293B] sm:text-3xl">
+            <span className="text-2xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-3xl">
               {likesReceived}
             </span>
-            <p className="mt-1 text-sm font-medium text-slate-500">
+            <p className="mt-1 text-sm font-medium text-slate-500 dark:text-gray-400">
               收到 {likesReceived} 個讚
             </p>
           </Card>
         </div>
 
         {/* My Photos */}
-        <Card className="border-0 bg-white p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
+        <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
           <div className="mb-6 flex items-center justify-between">
             <div>
-              <h2 className="text-lg font-bold text-[#1E293B]">我嘅相片</h2>
-              <p className="text-xs text-slate-400">
+              <h2 className="text-lg font-bold text-[#1E293B] dark:text-gray-100">我嘅相片</h2>
+              <p className="text-xs text-slate-400 dark:text-gray-500">
                 你喺活動中分享嘅溫暖時刻
               </p>
             </div>
@@ -111,9 +111,9 @@ export default function ProfilePage() {
           </div>
 
           {myPhotos.length === 0 ? (
-            <div className="rounded-xl border-2 border-dashed border-slate-200 py-16 text-center">
-              <Camera className="mx-auto mb-3 h-10 w-10 text-slate-300" />
-              <p className="text-sm text-slate-400">
+            <div className="rounded-xl border-2 border-dashed border-slate-200 dark:border-gray-700 py-16 text-center">
+              <Camera className="mx-auto mb-3 h-10 w-10 text-slate-300 dark:text-gray-600" />
+              <p className="text-sm text-slate-400 dark:text-gray-500">
                 未有上載相片
               </p>
               <Link

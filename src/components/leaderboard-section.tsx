@@ -30,20 +30,20 @@ const rankStyles = [
     glow: "shadow-amber-600/20",
   },
   {
-    bg: "bg-slate-200",
-    text: "text-slate-500",
+    bg: "bg-slate-200 dark:bg-gray-700",
+    text: "text-slate-500 dark:text-gray-300",
     label: "",
     glow: "",
   },
   {
-    bg: "bg-slate-200",
-    text: "text-slate-500",
+    bg: "bg-slate-200 dark:bg-gray-700",
+    text: "text-slate-500 dark:text-gray-300",
     label: "",
     glow: "",
   },
   {
-    bg: "bg-slate-200",
-    text: "text-slate-500",
+    bg: "bg-slate-200 dark:bg-gray-700",
+    text: "text-slate-500 dark:text-gray-300",
     label: "",
     glow: "",
   },
@@ -55,17 +55,17 @@ export function LeaderboardSection({ likedIds, onLike }: LeaderboardSectionProps
   const topPhotos = getTopPhotos(6);
 
   return (
-    <section className="mx-auto max-w-7xl bg-white py-16 mb-12 rounded-2xl shadow-xl shadow-[#2A9D8F]/20">
+    <section className="mx-auto max-w-7xl bg-white dark:bg-[#0d1a17] py-16 mb-12 rounded-2xl shadow-xl shadow-[#2A9D8F]/20">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="mb-10 text-center">
           <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-[#2A9D8F]/10 px-4 py-1.5 text-sm font-medium text-[#2A9D8F]">
             <Trophy className="h-4 w-4" />
             <span>最受支持相片</span>
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-[#1E293B] sm:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tight text-[#1E293B] dark:text-gray-100 sm:text-3xl">
             最多「守護」嘅動人時刻 🌟
           </h2>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-sm text-slate-500 dark:text-gray-400">
             每一票都代表一份愛同支持
           </p>
         </div>
@@ -79,7 +79,7 @@ export function LeaderboardSection({ likedIds, onLike }: LeaderboardSectionProps
               <Link
                 key={photo.id}
                 href={`/photo/${photo.id}`}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-md shadow-[#2A9D8F]/10 transition-all duration-300 hover:shadow-xl hover:shadow-[#2A9D8F]/30 hover:-translate-y-1"
+                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-[#0d1a17] shadow-md shadow-[#2A9D8F]/10 transition-all duration-300 hover:shadow-xl hover:shadow-[#2A9D8F]/30 hover:-translate-y-1"
               >
                 {/* Ranking Badge */}
                 <div
@@ -101,7 +101,7 @@ export function LeaderboardSection({ likedIds, onLike }: LeaderboardSectionProps
 
                 {/* Content */}
                 <div className="space-y-2 p-4">
-                  <p className="line-clamp-2 text-sm leading-snug text-slate-700">
+                  <p className="line-clamp-2 text-sm leading-snug text-slate-700 dark:text-gray-300">
                     {photo.caption}
                   </p>
                   <div className="flex items-center justify-between">
@@ -112,7 +112,7 @@ export function LeaderboardSection({ likedIds, onLike }: LeaderboardSectionProps
                           {photo.uploader.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="text-xs font-medium text-slate-500">
+                      <span className="text-xs font-medium text-slate-500 dark:text-gray-400">
                         {photo.uploader.name}
                       </span>
                     </div>
@@ -129,12 +129,12 @@ export function LeaderboardSection({ likedIds, onLike }: LeaderboardSectionProps
                         className={`h-4 w-4 transition-all ${
                           isLiked
                             ? "fill-[#E76F51] text-[#E76F51]"
-                            : "text-slate-400 hover:text-[#E76F51]"
+                            : "text-slate-400 dark:text-gray-500 hover:text-[#E76F51]"
                         }`}
                       />
                       <span
                         className={`text-xs font-medium ${
-                          isLiked ? "text-[#E76F51]" : "text-slate-500"
+                          isLiked ? "text-[#E76F51]" : "text-slate-500 dark:text-gray-400"
                         }`}
                       >
                         {photo.likes}

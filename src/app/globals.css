@@ -26,6 +26,28 @@
     --radius: 0.625rem;
   }
 
+  .dark {
+    --background: 172 30% 8%;
+    --foreground: 0 0% 95%;
+    --card: 222 30% 6%;
+    --card-foreground: 0 0% 95%;
+    --popover: 222 30% 6%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 172 56% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 172 30% 12%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 172 20% 10%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 14 60% 55%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 172 20% 15%;
+    --input: 172 20% 15%;
+    --ring: 172 56% 50%;
+  }
+
   * {
     @apply border-border;
   }
@@ -34,9 +56,17 @@
     background-color: #2A9D8F;
   }
 
+  html.dark {
+    background-color: #0f2c28;
+  }
+
   body {
     background-color: #2A9D8F;
     font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  html.dark body {
+    background-color: #0f2c28;
   }
 }
 
@@ -52,6 +82,43 @@
 
   .animate-count-up {
     animation: count-up 0.5s ease-out forwards;
+  }
+
+  /* Skeleton shimmer */
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      #e2e8f0 25%,
+      #f1f5f9 50%,
+      #e2e8f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  .dark .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      #1e293b 25%,
+      #334155 50%,
+      #1e293b 75%
+    );
+    background-size: 200% 100%;
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+  }
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #475569;
   }
 }
 
@@ -74,5 +141,59 @@
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes heart-float {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) scale(1.5);
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fly-hearts {
+  0% {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-60px) translateX(var(--x)) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-120px) translateX(var(--x-end)) scale(0.8);
+  }
+}
+
+@keyframes slide-up-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

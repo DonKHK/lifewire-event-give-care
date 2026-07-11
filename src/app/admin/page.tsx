@@ -47,10 +47,10 @@ export default function AdminDashboard() {
               <Shield className="h-5 w-5 text-[#2A9D8F]" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-[#1E293B] sm:text-3xl">
+              <h1 className="text-2xl font-bold tracking-tight text-[#1E293B] dark:text-gray-100 sm:text-3xl">
                 Admin Dashboard
               </h1>
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-slate-500 dark:text-gray-400">
                 管理活動資料同相片審核
               </p>
             </div>
@@ -59,63 +59,113 @@ export default function AdminDashboard() {
         </div>
 
         {/* TODO: Admin Auth Notice */}
-        <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-700">
+        <div className="mb-8 rounded-xl border border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm text-amber-700 dark:text-amber-300">
           <p className="font-medium">⚠️ 開發階段</p>
           <p className="mt-1 text-xs">
             TODO: 整合 Supabase Auth 並限制 admin 頁面存取權限
           </p>
         </div>
 
+        {/* Create new event button — prominent white card */}
+        <div className="mb-8">
+          <Card className="border-0 bg-white p-6 shadow-xl shadow-[#2A9D8F]/20">
+            <div className="flex items-center gap-4">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E8F5F3]">
+                <Plus className="h-6 w-6 text-[#2A9D8F]" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-bold text-[#1E293B]">建立新活動</h3>
+                <p className="text-xs text-slate-400">建立一個全新嘅活動，開始收集相片同捐款</p>
+              </div>
+              <Dialog>
+                <DialogTrigger render={<Button size="xl" className="bg-[#2A9D8F] text-white shadow-lg shadow-[#2A9D8F]/30 hover:bg-[#248f82] hover:shadow-[#2A9D8F]/40 transition-all" />}>
+                  <Plus className="mr-2 h-5 w-5" />
+                  建立新活動
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>建立新活動</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    {/* TODO: Create event form with Supabase integration */}
+                    <p className="text-sm text-slate-500 dark:text-gray-400">
+                      TODO: 整合 Supabase Database，建立新活動記錄
+                    </p>
+                    <Input
+                      placeholder="活動名稱"
+                      className="border-slate-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-[#2A9D8F]"
+                    />
+                    <Input
+                      placeholder="活動日期"
+                      className="border-slate-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-[#2A9D8F]"
+                    />
+                    <Textarea
+                      placeholder="活動描述"
+                      className="min-h-[100px] resize-none border-slate-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-[#2A9D8F]"
+                    />
+                    <Button
+                      size="lg"
+                      className="w-full bg-[#2A9D8F] text-white hover:bg-[#248f82]"
+                    >
+                      建立活動
+                    </Button>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </div>
+          </Card>
+        </div>
+
         {/* ── Event Stats Row ── */}
         <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <Card className="border-0 bg-white p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8F5F3]">
               <Image className="h-5 w-5 text-[#2A9D8F]" />
             </div>
-            <span className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">
+            <span className="text-xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-2xl">
               {mockEvent.stats.photos.toLocaleString()}
             </span>
-            <p className="text-[11px] font-medium text-slate-500">總相片數</p>
+            <p className="text-[11px] font-medium text-slate-500 dark:text-gray-400">總相片數</p>
           </Card>
-          <Card className="border-0 bg-white p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FDF0ED]">
               <Heart className="h-5 w-5 text-[#E76F51]" />
             </div>
-            <span className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">
+            <span className="text-xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-2xl">
               {mockEvent.stats.supports.toLocaleString()}
             </span>
-            <p className="text-[11px] font-medium text-slate-500">總支持次數</p>
+            <p className="text-[11px] font-medium text-slate-500 dark:text-gray-400">總支持次數</p>
           </Card>
-          <Card className="border-0 bg-white p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#E8F5F3]">
               <PiggyBank className="h-5 w-5 text-[#2A9D8F]" />
             </div>
-            <span className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">
+            <span className="text-xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-2xl">
               ${mockEvent.stats.demoRaised.toLocaleString()}
             </span>
-            <p className="text-[11px] font-medium text-slate-500">籌款總額 (HKD)</p>
+            <p className="text-[11px] font-medium text-slate-500 dark:text-gray-400">籌款總額 (HKD)</p>
           </Card>
-          <Card className="border-0 bg-white p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-4 text-center shadow-xl shadow-[#2A9D8F]/20">
             <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-[#FDF0ED]">
               <TrendingUp className="h-5 w-5 text-[#E76F51]" />
             </div>
-            <span className="text-xl font-extrabold text-[#1E293B] sm:text-2xl">
+            <span className="text-xl font-extrabold text-[#1E293B] dark:text-gray-100 sm:text-2xl">
               {mostLikedPhoto ? mostLikedPhoto.likes : 0}
             </span>
-            <p className="text-[11px] font-medium text-slate-500">最多 Like</p>
+            <p className="text-[11px] font-medium text-slate-500 dark:text-gray-400">最多 Like</p>
           </Card>
         </div>
 
         {/* ── Most Liked Photo + Top Supporters ── */}
         <div className="mb-8 grid gap-6 lg:grid-cols-2">
           {/* Most Liked Photo */}
-          <Card className="border-0 bg-white p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
             <div className="mb-4 flex items-center gap-2">
               <Trophy className="h-5 w-5 text-amber-500" />
-              <h2 className="text-lg font-bold text-[#1E293B]">最多人支持嘅相片</h2>
+              <h2 className="text-lg font-bold text-[#1E293B] dark:text-gray-100">最多人支持嘅相片</h2>
             </div>
             {mostLikedPhoto && (
-              <div className="overflow-hidden rounded-xl border border-slate-100">
+              <div className="overflow-hidden rounded-xl border border-slate-100 dark:border-gray-700">
                 <div className="aspect-video overflow-hidden">
                   <img
                     src={mostLikedPhoto.imageUrl}
@@ -124,7 +174,7 @@ export default function AdminDashboard() {
                   />
                 </div>
                 <div className="p-4">
-                  <p className="text-sm font-medium text-slate-700">
+                  <p className="text-sm font-medium text-slate-700 dark:text-gray-300">
                     {mostLikedPhoto.caption}
                   </p>
                   <div className="mt-3 flex items-center justify-between">
@@ -135,7 +185,7 @@ export default function AdminDashboard() {
                           {mostLikedPhoto.uploader.name.charAt(0)}
                         </AvatarFallback>
                       </Avatar>
-                      <span className="text-xs font-medium text-slate-500">
+                      <span className="text-xs font-medium text-slate-500 dark:text-gray-400">
                         {mostLikedPhoto.uploader.name}
                       </span>
                     </div>
@@ -150,16 +200,16 @@ export default function AdminDashboard() {
           </Card>
 
           {/* Top Supporters 🏆 */}
-          <Card className="border-0 bg-white p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
             <div className="mb-4 flex items-center gap-2">
               <Star className="h-5 w-5 text-[#E76F51]" />
-              <h2 className="text-lg font-bold text-[#1E293B]">Top Supporters</h2>
+              <h2 className="text-lg font-bold text-[#1E293B] dark:text-gray-100">Top Supporters</h2>
             </div>
             <div className="space-y-3">
               {mockTopSupporters.map((supporter, index) => (
                 <div
                   key={supporter.name}
-                  className="flex items-center gap-3 rounded-xl border border-slate-100 p-3 transition-all hover:border-slate-200"
+                  className="flex items-center gap-3 rounded-xl border border-slate-100 dark:border-gray-700 p-3 transition-all hover:border-slate-200 dark:hover:border-gray-600"
                 >
                   {/* Rank Badge */}
                   <div
@@ -170,7 +220,7 @@ export default function AdminDashboard() {
                         ? "bg-slate-100 text-slate-600"
                         : index === 2
                         ? "bg-orange-100 text-orange-700"
-                        : "bg-slate-50 text-slate-400"
+                        : "bg-slate-50 dark:bg-gray-700 text-slate-400 dark:text-gray-300"
                     }`}
                   >
                     {index + 1}
@@ -182,10 +232,10 @@ export default function AdminDashboard() {
                     </AvatarFallback>
                   </Avatar>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-slate-700">
+                    <p className="text-sm font-semibold text-slate-700 dark:text-gray-200">
                       {supporter.name}
                     </p>
-                    <p className="text-xs text-slate-400">
+                    <p className="text-xs text-slate-400 dark:text-gray-500">
                       守護咗 {supporter.supports} 次
                     </p>
                   </div>
@@ -194,8 +244,8 @@ export default function AdminDashboard() {
               ))}
             </div>
 
-            <div className="mt-4 border-t border-slate-100 pt-4 text-center">
-              <p className="text-xs text-slate-400">
+            <div className="mt-4 border-t border-slate-100 dark:border-gray-700 pt-4 text-center">
+              <p className="text-xs text-slate-400 dark:text-gray-500">
                 🏅 頭 5 位守護者 — 每人都係 rare disease 家庭嘅希望
               </p>
             </div>
@@ -205,39 +255,39 @@ export default function AdminDashboard() {
         {/* ── Existing: Edit Event + Photo Moderation Grid ── */}
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Create/Edit Event Form */}
-          <Card className="border-0 bg-white p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
-            <h2 className="mb-6 text-lg font-bold text-[#1E293B]">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
+            <h2 className="mb-6 text-lg font-bold text-[#1E293B] dark:text-gray-100">
               編輯活動資料
             </h2>
             <div className="space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-700">
+                <label className="text-sm font-medium text-slate-700 dark:text-gray-300">
                   活動名稱
                 </label>
                 <Input
                   value={eventTitle}
                   onChange={(e) => setEventTitle(e.target.value)}
-                  className="border-slate-200 focus:border-[#2A9D8F] focus:ring-[#2A9D8F]"
+                  className="border-slate-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-[#2A9D8F] focus:ring-[#2A9D8F]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-700">
+                <label className="text-sm font-medium text-slate-700 dark:text-gray-300">
                   日期與時間
                 </label>
                 <Input
                   value={eventDate}
                   onChange={(e) => setEventDate(e.target.value)}
-                  className="border-slate-200 focus:border-[#2A9D8F] focus:ring-[#2A9D8F]"
+                  className="border-slate-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-[#2A9D8F] focus:ring-[#2A9D8F]"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-700">
+                <label className="text-sm font-medium text-slate-700 dark:text-gray-300">
                   活動描述
                 </label>
                 <Textarea
                   value={eventDescription}
                   onChange={(e) => setEventDescription(e.target.value)}
-                  className="min-h-[120px] resize-none border-slate-200 focus:border-[#2A9D8F] focus:ring-[#2A9D8F]"
+                  className="min-h-[120px] resize-none border-slate-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 focus:border-[#2A9D8F] focus:ring-[#2A9D8F]"
                 />
               </div>
               <Button
@@ -251,14 +301,14 @@ export default function AdminDashboard() {
           </Card>
 
           {/* Photo Moderation Grid */}
-          <Card className="border-0 bg-white p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
+          <Card className="border-0 bg-white dark:bg-[#0d1a17] p-6 shadow-xl shadow-[#2A9D8F]/20 sm:p-8">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-bold text-[#1E293B]">
+              <h2 className="text-lg font-bold text-[#1E293B] dark:text-gray-100">
                 相片審核
               </h2>
               <Badge
                 variant="secondary"
-                className="bg-[#E8F5F3] text-[#2A9D8F]"
+                className="bg-[#E8F5F3] dark:bg-[#1a3d38] text-[#2A9D8F]"
               >
                 {photos.length} 張
               </Badge>
@@ -271,7 +321,7 @@ export default function AdminDashboard() {
                 className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                   !viewAllPhotos
                     ? "bg-[#2A9D8F] text-white"
-                    : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                    : "bg-slate-100 dark:bg-gray-700 text-slate-500 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-600"
                 }`}
               >
                 最近
@@ -281,7 +331,7 @@ export default function AdminDashboard() {
                 className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${
                   viewAllPhotos
                     ? "bg-[#2A9D8F] text-white"
-                    : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                    : "bg-slate-100 dark:bg-gray-700 text-slate-500 dark:text-gray-300 hover:bg-slate-200 dark:hover:bg-gray-600"
                 }`}
               >
                 全部
@@ -292,7 +342,7 @@ export default function AdminDashboard() {
               {(viewAllPhotos ? photos : photos.slice(0, 5)).map((photo) => (
                 <div
                   key={photo.id}
-                  className="flex items-center gap-3 rounded-xl border border-slate-100 bg-slate-50 p-3 transition-all hover:border-slate-200"
+                  className="flex items-center gap-3 rounded-xl border border-slate-100 dark:border-gray-700 bg-slate-50 dark:bg-gray-800/50 p-3 transition-all hover:border-slate-200 dark:hover:border-gray-600"
                 >
                   <div className="h-14 w-14 flex-shrink-0 overflow-hidden rounded-lg">
                     <img
@@ -302,17 +352,17 @@ export default function AdminDashboard() {
                     />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-medium text-slate-700">
+                    <p className="truncate text-sm font-medium text-slate-700 dark:text-gray-300">
                       {photo.uploader.name}
                     </p>
-                    <p className="truncate text-xs text-slate-400">
+                    <p className="truncate text-xs text-slate-400 dark:text-gray-500">
                       {photo.caption}
                     </p>
                   </div>
                   <Button
                     size="icon"
                     variant="ghost"
-                    className="h-8 w-8 flex-shrink-0 text-slate-400 hover:bg-red-50 hover:text-red-500"
+                    className="h-8 w-8 flex-shrink-0 text-slate-400 dark:text-gray-500 hover:bg-red-50 dark:hover:bg-red-900/30 hover:text-red-500"
                     onClick={() => removePhoto(photo.id)}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -331,51 +381,6 @@ export default function AdminDashboard() {
           </Card>
         </div>
 
-        {/* TODO: Create new event dialog */}
-        <div className="mt-8 flex justify-center">
-          <Dialog>
-            <DialogTrigger
-              render={
-                <Button
-                  variant="outline"
-                  className="border-dashed border-slate-300 text-slate-500 hover:border-[#2A9D8F] hover:text-[#2A9D8F]"
-                />
-              }
-            >
-              <Plus className="mr-2 h-4 w-4" />
-              建立新活動
-            </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
-              <DialogHeader>
-                <DialogTitle>建立新活動</DialogTitle>
-              </DialogHeader>
-              <div className="space-y-4 py-4">
-                {/* TODO: Create event form with Supabase integration */}
-                <p className="text-sm text-slate-500">
-                  TODO: 整合 Supabase Database，建立新活動記錄
-                </p>
-                <Input
-                  placeholder="活動名稱"
-                  className="border-slate-200 focus:border-[#2A9D8F]"
-                />
-                <Input
-                  placeholder="活動日期"
-                  className="border-slate-200 focus:border-[#2A9D8F]"
-                />
-                <Textarea
-                  placeholder="活動描述"
-                  className="min-h-[100px] resize-none border-slate-200 focus:border-[#2A9D8F]"
-                />
-                <Button
-                  size="lg"
-                  className="w-full bg-[#2A9D8F] text-white hover:bg-[#248f82]"
-                >
-                  建立活動
-                </Button>
-              </div>
-            </DialogContent>
-          </Dialog>
-        </div>
       </section>
     </div>
   );

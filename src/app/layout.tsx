@@ -3,6 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ToastProvider } from "@/lib/toast-context";
+import { Toaster } from "@/components/toaster";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,11 +24,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-HK" className={inter.variable}>
+    <html lang="zh-HK" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen bg-[#2A9D8F] antialiased">
-        <Header />
-        <main className="min-h-[calc(100vh-8rem)]">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <ToastProvider>
+            <Header />
+            <main className="min-h-[calc(100vh-8rem)]">{children}</main>
+            <Footer />
+            <Toaster />
+          </ToastProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

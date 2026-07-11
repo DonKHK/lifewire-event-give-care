@@ -21,7 +21,7 @@ export function PhotoCard({ photo, liked = false, onLike }: PhotoCardProps) {
 
   return (
     <Link href={`/photo/${photo.id}`} className="group block">
-      <Card className="overflow-hidden border-0 bg-white shadow-md shadow-[#2A9D8F]/10 transition-all duration-300 hover:shadow-xl hover:shadow-[#2A9D8F]/30 hover:-translate-y-1">
+      <Card className="overflow-hidden border-0 bg-white dark:bg-[#0d1a17] shadow-md shadow-[#2A9D8F]/10 transition-all duration-300 hover:shadow-xl hover:shadow-[#2A9D8F]/30 hover:-translate-y-1">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={photo.imageUrl}
@@ -32,7 +32,7 @@ export function PhotoCard({ photo, liked = false, onLike }: PhotoCardProps) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
         <div className="space-y-2 p-4">
-          <p className="line-clamp-2 text-sm leading-snug text-slate-700">
+          <p className="line-clamp-2 text-sm leading-snug text-slate-700 dark:text-gray-300">
             {photo.caption}
           </p>
           <div className="flex items-center justify-between">
@@ -43,7 +43,7 @@ export function PhotoCard({ photo, liked = false, onLike }: PhotoCardProps) {
                   {photo.uploader.name.charAt(0)}
                 </AvatarFallback>
               </Avatar>
-              <span className="text-xs font-medium text-slate-500">
+              <span className="text-xs font-medium text-slate-500 dark:text-gray-400">
                 {photo.uploader.name}
               </span>
             </div>
@@ -56,12 +56,12 @@ export function PhotoCard({ photo, liked = false, onLike }: PhotoCardProps) {
                 className={`h-4 w-4 transition-all ${
                   liked
                     ? "fill-[#E76F51] text-[#E76F51]"
-                    : "text-slate-400 hover:text-[#E76F51]"
+                    : "text-slate-400 dark:text-gray-500 hover:text-[#E76F51]"
                 }`}
               />
               <span
                 className={`text-xs font-medium ${
-                  liked ? "text-[#E76F51]" : "text-slate-500"
+                  liked ? "text-[#E76F51]" : "text-slate-500 dark:text-gray-400"
                 }`}
               >
                 {photo.likes}
