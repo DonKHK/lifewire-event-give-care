@@ -16,6 +16,9 @@ import {
   Palette,
   Bell,
   BookOpen,
+  LogIn,
+  Menu,
+  ExternalLink,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
@@ -46,6 +49,13 @@ const features = [
     bg: "bg-[#E8F5F3]",
   },
   {
+    icon: <Menu className="h-5 w-5" />,
+    title: "Header Navigation Bar",
+    desc: "Sticky 頂部導航欄，包含 Logo、導航連結（首頁/上載相片/個人檔案/Admin/功課說明）、用戶頭像、登入/登出按鈕、深色模式切換",
+    color: "text-[#2A9D8F]",
+    bg: "bg-[#E8F5F3]",
+  },
+  {
     icon: <ImagePlus className="h-5 w-5" />,
     title: "相片牆 (Photo Gallery)",
     desc: "展示活動相片，支援 Like / Unlike，按熱門度排序",
@@ -65,6 +75,13 @@ const features = [
     desc: "Click 入相片睇大圖、caption、上載者資料；支援 WhatsApp / Facebook / Link 分享",
     color: "text-[#E76F51]",
     bg: "bg-[#FDF0ED]",
+  },
+  {
+    icon: <Gift className="h-5 w-5" />,
+    title: "捐款計劃 (4-tier Donation Plans)",
+    desc: "首頁顯示四款捐款方案（HK$100 / $300 / $500 / $1,000），每款有獨立描述同 icon，一 Click 打開捐款 Modal",
+    color: "text-[#2A9D8F]",
+    bg: "bg-[#E8F5F3]",
   },
   {
     icon: <Gift className="h-5 w-5" />,
@@ -109,6 +126,13 @@ const features = [
     bg: "bg-[#E8F5F3]",
   },
   {
+    icon: <LogIn className="h-5 w-5" />,
+    title: "登入 / 註冊系統 (Authentication)",
+    desc: "支援 Login / Register 頁面，Demo 帳戶（admin@lifewire.org / user@test.com），localStorage Session 持久化，登出功能",
+    color: "text-[#2A9D8F]",
+    bg: "bg-[#E8F5F3]",
+  },
+  {
     icon: <Palette className="h-5 w-5" />,
     title: "深色模式 / 淺色模式",
     desc: "支援 Dark Mode 切換，主題色統一使用 #2A9D8F（Teal）+ #E76F51（Coral）",
@@ -131,10 +155,17 @@ const features = [
   },
   {
     icon: <Heart className="h-5 w-5" />,
-    title: "分享卡生成 (Share Card)",
-    desc: "將活動相片生成為精美分享卡，方便分享到社交媒體",
+    title: "CTA Section + 分享卡生成 (Share Card)",
+    desc: "首頁底部 Call-to-Action 區域：一鍵支持（愛心浮動動畫）、將活動相片生成為精美分享卡，方便分享到社交媒體",
     color: "text-[#2A9D8F]",
     bg: "bg-[#E8F5F3]",
+  },
+  {
+    icon: <ExternalLink className="h-5 w-5" />,
+    title: "Footer",
+    desc: "網站底部版權資訊、品牌標語、Lifewire 使命宣言、「功課說明」連結",
+    color: "text-[#E76F51]",
+    bg: "bg-[#FDF0ED]",
   },
 ];
 
