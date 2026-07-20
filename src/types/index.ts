@@ -1,8 +1,17 @@
-// TODO: Supabase integration - replace these interfaces with Supabase types
+export type UserRole = "guest" | "user" | "admin";
+
 export interface Uploader {
   id: string;
   name: string;
   avatar: string;
+}
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  name: string;
+  avatar: string;
+  role: UserRole;
 }
 
 export interface Photo {

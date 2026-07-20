@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ToastProvider } from "@/lib/toast-context";
 import { Toaster } from "@/components/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/lib/auth-context";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,12 +28,14 @@ export default function RootLayout({
     <html lang="zh-HK" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen bg-[#2A9D8F] antialiased">
         <ThemeProvider>
-          <ToastProvider>
-            <Header />
-            <main className="min-h-[calc(100vh-8rem)]">{children}</main>
-            <Footer />
-            <Toaster />
-          </ToastProvider>
+          <AuthProvider>
+            <ToastProvider>
+              <Header />
+              <main className="min-h-[calc(100vh-8rem)]">{children}</main>
+              <Footer />
+              <Toaster />
+            </ToastProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

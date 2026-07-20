@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { Trash2, Shield, Plus, Image, Heart, PiggyBank, Trophy, Star, TrendingUp } from "lucide-react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { Trash2, Shield, Plus, Image, Heart, PiggyBank, Trophy, Star, TrendingUp, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -11,12 +12,12 @@ import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { mockEvent, mockPhotos, mockTopSupporters, getMostLikedPhoto } from "@/lib/data";
+import { useAuth } from "@/lib/auth-context";
 import type { Photo } from "@/types";
 
-// TODO: Replace with Supabase authentication
-// const isAdmin = (await supabase.auth.getUser())?.user?.email === 'admin@lifewire.org'
-
 export default function AdminDashboard() {
+  const router = useRouter();
+  const { user, isAdmin, isLoading } = useAuth();
   const [photos, setPhotos] = useState<Photo[]>(mockPhotos);
   const [eventTitle, setEventTitle] = useState(mockEvent.title);
   const [eventDate, setEventDate] = useState(mockEvent.date);
@@ -25,6 +26,28 @@ export default function AdminDashboard() {
   const [viewAllPhotos, setViewAllPhotos] = useState(false);
 
   const mostLikedPhoto = getMostLikedPhoto();
+
+  // Redirect non-admin users
+  useEffect(() => {
+    if (!isLoading && !isAdmin) {
+      router.push("/login");
+    }
+  }, [isLoading, isAdmin, router]);
+
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="mx-auto h-8 w-8 animate-spin text-white" />
+          <p className="mt-3 text-sm text-white/70">載入中...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAdmin || !user) {
+    return null;
+  }
 
   const removePhoto = (id: string) => {
     // TODO: Also delete from Supabase Storage and Database
@@ -56,14 +79,6 @@ export default function AdminDashboard() {
             </div>
           </div>
           <Separator className="mt-6" />
-        </div>
-
-        {/* TODO: Admin Auth Notice */}
-        <div className="mb-8 rounded-xl border border-amber-200 dark:border-amber-700/50 bg-amber-50 dark:bg-amber-900/20 p-4 text-sm text-amber-700 dark:text-amber-300">
-          <p className="font-medium">⚠️ 開發階段</p>
-          <p className="mt-1 text-xs">
-            TODO: 整合 Supabase Auth 並限制 admin 頁面存取權限
-          </p>
         </div>
 
         {/* Create new event button — prominent white card */}
