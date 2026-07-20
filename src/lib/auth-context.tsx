@@ -75,7 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return false;
   }, []);
 
-  const register = useCallback(async (name: string, email: string, password: string): Promise<boolean> => {
+  const register = useCallback(async (name: string, email: string, _password: string): Promise<boolean> => {
     setIsLoading(true);
     // Simulate network delay
     await new Promise((r) => setTimeout(r, 800));
